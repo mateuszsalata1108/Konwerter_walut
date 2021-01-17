@@ -3,6 +3,8 @@ package com.example.konwerterwalut;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,147 +56,108 @@ public class MainActivity extends AppCompatActivity {
         double GBPtoUSD= 1.36;
         double GBPtoJPY= 141.10;
 
-                String[] from = {"PLN","USD","JPY","EUR","GBP"};
+        String[] from = {"PLN","USD","JPY","EUR","GBP"};
         ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, from);
         sp1.setAdapter(adapter);
 
         String[] to = {"PLN","USD","JPY","EUR","GBP"};
         ArrayAdapter adapter1 = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, to);
         sp2.setAdapter(adapter1);
-
+        String walue = ed1.getText().toString();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double value;
-                double amount = Double.parseDouble(ed1.getText().toString());
-                String converted;
-
-                if(sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("USD"))
-                {
-                    value = Math.round(amount * PLNtoUSD);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-
-                }
-                else if(sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("GBP"))
-                {
-                    value = Math.round(amount * PLNtoGBP);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("JPY"))
-                {
-                    value = Math.round(amount * PLNtoJPY);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("EUR"))
-                {
-                    value = Math.round(amount * PLNtoEUR);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("PLN"))
-                {
-                    value = Math.round(amount * USDtoPLN);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("GBP"))
-                {
-                    value = Math.round(amount * USDtoGBP);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("JPY"))
-                {
-                    value = Math.round(amount * USDtoJPY);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("EUR"))
-                {
-                    value = Math.round(amount * USDtoEUR);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("PLM"))
-                {
-                    value = Math.round(amount * JPYtoPLN);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("GBP"))
-                {
-                    value = Math.round(amount * JPYtoGBP);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("USD"))
-                {
-                    value = Math.round(amount * JPYtoUSD);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("EUR"))
-                {
-                    value = Math.round(amount * JPYtoEUR);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("PLN"))
-                {
-                    value = Math.round(amount * EURtoPLN);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("GBP"))
-                {
-                    value = Math.round(amount * EURtoGBP);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("USD"))
-                {
-                    value = Math.round(amount * EURtoUSD);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("JPY"))
-                {
-                    value = Math.round(amount * EURtoJPY);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("PLN"))
-                {
-                    value = Math.round(amount * GBPtoPLN);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("EUR"))
-                {
-                    value = Math.round(amount * GBPtoEUR);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("USD"))
-                {
-                    value = Math.round(amount * GBPtoUSD);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else if(sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("JPY"))
-                {
-                    value = Math.round(amount * GBPtoJPY);
-                    converted = value + " " + sp2.getSelectedItem().toString();
-                    result.setText(converted);
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Wybierz różne waluty", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(ed1.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Nie podano ilości", Toast.LENGTH_LONG).show();
+                } else {
+                    double value;
+                    double amount = Double.parseDouble(ed1.getText().toString());
+                    String converted;
+                    if (sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("USD")) {
+                        value = Math.round(amount * PLNtoUSD * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("GBP")) {
+                        value = Math.round(amount * PLNtoGBP * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("JPY")) {
+                        value = Math.round(amount * PLNtoJPY * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("PLN") && sp2.getSelectedItem().toString().equals("EUR")) {
+                        value = Math.round(amount * PLNtoEUR * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("PLN")) {
+                        value = Math.round(amount * USDtoPLN * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("GBP")) {
+                        value = Math.round(amount * USDtoGBP * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("JPY")) {
+                        value = Math.round(amount * USDtoJPY * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("USD") && sp2.getSelectedItem().toString().equals("EUR")) {
+                        value = Math.round(amount * USDtoEUR * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("PLM")) {
+                        value = Math.round(amount * JPYtoPLN * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("GBP")) {
+                        value = Math.round(amount * JPYtoGBP * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("USD")) {
+                        value = Math.round(amount * JPYtoUSD * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("JPY") && sp2.getSelectedItem().toString().equals("EUR")) {
+                        value = Math.round(amount * JPYtoEUR * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("PLN")) {
+                        value = Math.round(amount * EURtoPLN * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("GBP")) {
+                        value = Math.round(amount * EURtoGBP * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("USD")) {
+                        value = Math.round(amount * EURtoUSD * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("EUR") && sp2.getSelectedItem().toString().equals("JPY")) {
+                        value = Math.round(amount * EURtoJPY * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("PLN")) {
+                        value = Math.round(amount * GBPtoPLN * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("EUR")) {
+                        value = Math.round(amount * GBPtoEUR * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("USD")) {
+                        value = Math.round(amount * GBPtoUSD * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else if (sp1.getSelectedItem().toString().equals("GBP") && sp2.getSelectedItem().toString().equals("JPY")) {
+                        value = Math.round(amount * GBPtoJPY * 10000.0) / 10000.0;
+                        converted = value + " " + sp2.getSelectedItem().toString();
+                        result.setText(converted);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Wybierz różne waluty", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
-        });
+            });
+        }
     }
-}
